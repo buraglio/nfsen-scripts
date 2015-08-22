@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# chkconfig: - 50 50
+# description: nfsen
+
+DAEMON=/services/netflow/bin/nfsen
+
+case "$1" in
+		start)
+		$DAEMON start
+		;;
+		stop)
+		$DAEMON stop
+		;;
+		status)
+		$DAEMON status
+		;;
+		restart)
+		$DAEMON stop
+		sleep 1
+		$DAEMON start
+		;;
+		*)
+		echo "Usage: $0 {start|stop|status|restart}"
+		exit 1
+		;;
+esac
+
+exit 0
